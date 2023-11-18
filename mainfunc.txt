@@ -1,0 +1,11 @@
+func main() {
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Printf("domain,hasMX,hasSPF,spfRecords,hasDMARC,dmarcRecord\n")
+	for scanner.Scan() {
+		checkDomain(scanner.Text())
+	}
+	err := scanner.Err()
+	if err != nil {
+		log.Fatal("Error:could not read from the input:%v\n", err)
+	}
+}

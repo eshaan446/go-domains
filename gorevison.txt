@@ -1,0 +1,44 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func greet() {
+	fmt.Println("Hello Go")
+}
+func sumd(a, b int) int {
+	ans := a + b
+	return ans
+}
+func main() {
+	var bookings = []string{} //defining a slice same as vectors in c++ i.e they are dynamic
+
+	for i := 0; i < 2; i++ {
+		var customer string
+		var last string
+		fmt.Println("Enter First name")
+		fmt.Scan(&customer)
+		fmt.Println("Enter last name")
+		fmt.Scan(&last)
+		bookings = append(bookings, customer+" "+last+",")
+		fmt.Printf("The booking made are as follows %v\n", bookings)
+	}
+	var allfirstnames = []string{}
+	for _, values := range bookings {
+		var names = strings.Fields(values) //same as split in JS it splits string into array of strings
+		var firstname = names[0]           //getting first name and appending it
+		allfirstnames = append(allfirstnames, firstname)
+	}
+	fmt.Printf("The first names of all the bookings are %v", allfirstnames)
+	greet() //functions
+	ans := sumd(23, 45)
+	fmt.Println(ans)
+	mp := make(map[int]int) //defining a map
+	for i := 0; i < 5; i++ {
+		mp[i] = i + 1
+	}
+	fmt.Println(mp)
+
+}
